@@ -65,19 +65,20 @@ input:focus {
     top: 0;
     bottom: 0;
     background-color: #a7a2ad; 
-    background-image: url("../svg/search-svg.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 25 25;
     width: 40px;
     color: #fff; 
     border: none;
-    padding: 5px 5px; 
+    padding-top: 3px; 
     border-radius: 5px; 
 }
 .search-button:hover,
 .search-button:focus {
     background-color: #ac9e9e;
     outline: none;
+}
+.svg-icon:hover,
+.svg-icon:focus {
+    fill: lightgray;
+    transition: 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
