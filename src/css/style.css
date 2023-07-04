@@ -1,0 +1,18 @@
+.search-form {
+    text-align: center;
+    background-color: lightgray;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+input {
+    color: rgb(110, 99, 99);
+    font-size: 20px;
+    padding: 3px;
+    border: 1px solid #ab8f8f;
+    border-radius: 5px;
+}
+input:focus {
+    outline: none; 
+    border-color: rgb(110, 99, 99); 
+    box-shadow: 0 0 5px rgb(110, 99, 99); 
+  }
