@@ -29,18 +29,20 @@ button {
     cursor: pointer;
 }
 /* ------------------------------- */
+.top-container {
+    padding: 30px;
+    background-color: lightgray;
+}
+
 .search-form {
     margin-left: auto;
     margin-right: auto;
-    padding-left: 500px;
-    padding-right: 500px;
     background-color: lightgray;
-    padding-top: 20px;
-    padding-bottom: 20px;
     width: max-content;
 
 }
 input {
+    width: 400px;
     color: rgb(110, 99, 99);
     font-size: 20px;
     padding: 3px;
@@ -53,7 +55,7 @@ input:focus {
     box-shadow: 0 0 5px rgb(110, 99, 99); 
   }
 
-.container {
+.form-container {
     position: relative;
 }
 
@@ -71,6 +73,6 @@ input:focus {
 .search-button:hover,
 .search-button:focus {
     background-color: #ac9e9e;
-    outline: none;  
+    outline: none;
 }
 
