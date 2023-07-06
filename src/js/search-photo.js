@@ -1,18 +1,22 @@
 
-const formEl = document.querySelector('.search-form');// форма
-const searchButtonEl = document.querySelector('.search-button');// пошук
-const loadMoreButtonEl = document.querySelector('.load-more');// кнопка додаткового підвантаження зображень
-const galerryEl = document.querySelector('.gallery');// галерея зображень
+import { PixabayAPI } from "./pixabay-api";
+import createGalleryCards from './createPhotoGallery';
 
-const inputEl = formEl.firstElementChild;// поле вводу
+const searchFormEl = document.querySelector('.search-form');
+const galleryListEl = document.querySelector('.gallery');
+const loadMoreButtonEl = document.querySelector('.load-more');
 
-const handleSearchPhotoGalerry = (e) => {
+const unsplashInstance = new PixabayAPI();
 
-e.preventDefault();
+const handleSearchFormSubmit = event => {
+    event.preventDefault();
 
 }
 
-formEl.addEventListener('submit', handleSearchPhotoGalerry)
+searchFormEl.addEventListener('submit', handleSearchFormSubmit);
+
+
+
 
 
 
