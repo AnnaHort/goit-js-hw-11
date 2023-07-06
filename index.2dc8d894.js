@@ -1,0 +1,2 @@
+!function(){var t=document.querySelector('[name="searchQuery"]');fetch("".concat("https://pixabay.com/api","/?key=").concat("38070095-9e6d535b4dc883ad57627f805","&q=").concat(t.value,"&image_type=photo&orientation=horizontal&safeswarch=true")).then((function(t){if(!t.ok)throw new Error(t.status);return t.json()})).then((function(t){console.log(t)})).catch((function(t){return console.log(t.status)}))}();
+//# sourceMappingURL=index.2dc8d894.js.map
