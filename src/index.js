@@ -1,1 +1,1 @@
-import './js/pixabay'
+import './js/pixabay-api'
