@@ -13,9 +13,8 @@ fetchPhotos() {
         throw new Error (response.status) // штучне створення виклику повернення помилки
     }
     return response.json() // повертаємо відповідь від сервера у читабельному форматі
-    })
-    .catch(error => console.log(error.message));
-}
+    });
+  }
 }
 
 
