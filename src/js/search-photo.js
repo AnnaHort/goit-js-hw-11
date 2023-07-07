@@ -14,6 +14,7 @@ const handleSearchFormSubmit = event => {
     const searchQuery = inputEl.value.trim();// значення інпуту без пробілів
 
     if (!searchQuery) {// якщо інпут пустий 
+        inputEl.value = '';
         return console.log("Sorry, there are no images matching your search query. Please try again.")
     };
 
@@ -23,16 +24,36 @@ const handleSearchFormSubmit = event => {
     unsplashInstance.fetchPhotos().then(data => {
         // console.log(data);
         if(!data.hits.length) {// якщо таких даних немає на сервері
+            inputEl.value = '';
             return console.log("Sorry, there are no images matching your search query. Please try again.")
         }
 
         galleryListEl.innerHTML = createGalleryCards(data.hits);
+        loadMoreButtonEl.classList.remove('is-hidden');
+
+        inputEl.value = '';
+        inputEl.blur();
 })
 .catch(console.warn);
+};
 
-}
+const handleLoadMoreButtonClick = () => {
+    unsplashInstance.page += 1;
+
+    unsplashInstance
+    .fetchPhotos()
+    .then(data => {
+        if(unsplashInstance.page === data.total) {
+        loadMoreButtonEl.classList.add('is-hidden');
+        }
+
+        galleryListEl.insertAdjacentHTML('beforeend', createGalleryCards(data.hits))
+    }).catch(console.warn);
+    loadMoreButtonEl.blur();
+};
 
 searchFormEl.addEventListener('submit', handleSearchFormSubmit);
+loadMoreButtonEl.addEventListener('click', handleLoadMoreButtonClick);
 
 
 
