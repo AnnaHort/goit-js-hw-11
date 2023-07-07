@@ -95,6 +95,7 @@ input:hover::placeholder {
 
 .gallery {
     display: flex;
+    flex-wrap: wrap;
 }
 .load-more {
     /* visibility: hidden; */
