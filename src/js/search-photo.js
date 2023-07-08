@@ -46,13 +46,10 @@ const handleLoadMoreButtonClick = () => {
     .fetchPhotos()
     .then(data => {
 
-
-
-        if( unsplashInstance.hits === data.totalHits) {
+        if( unsplashInstance.hits === data.totalHits.length) {
             loadMoreButtonEl.classList.add('is-hidden');
+            Notify.info("We're sorry, but you've reached the end of search results.") 
         }
-
-
 
         galleryListEl.insertAdjacentHTML('beforeend', createGalleryCards(data.hits))
     }).catch(console.warn);
