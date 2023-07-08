@@ -7,22 +7,37 @@ export class PixabayAPI {
  query = null;
  page = 1;
 
-fetchPhotos() {
-  return axios.get(
-    `${this.BASE_URL}?key=${this.API_KEY}&q=${this.query}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=40`
-  )
-    .then(response => {
-      if (!response.status === 200) {
-        throw new Error('Помилка при виконанні запиту'); // Штучне створення виклику повернення помилки
-      }
-      return response.data; // Повертаємо дані з відповіді сервера
-    })
-    .catch(error => {
-      console.log('Сталася помилка під час виконання запиту:', error);
-      throw error; // Прокидуємо помилку далі, якщо потрібно
-    });
+    async fetchPhotos() {
+  try {
+        const response = await axios.get(
+            `${this.BASE_URL}?key=${this.API_KEY}&q=${this.query}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=40`
+        );
+        if (!response.status === 200) {
+            throw new Error('Помилка при виконанні запиту'); // Штучне створення виклику повернення помилки
+        }
+        return response.data;
+    } catch (error) {
+        console.log('Сталася помилка під час виконання запиту:', error);
+        throw error; // Прокидуємо помилку далі, якщо потрібно
+    }
 }
 }
+
+// fetchPhotos() {
+//     return axios.get(
+//       `${this.BASE_URL}?key=${this.API_KEY}&q=${this.query}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=40`
+//     )
+//       .then(response => {
+//         if (!response.status === 200) {
+//           throw new Error('Помилка при виконанні запиту'); // Штучне створення виклику повернення помилки
+//         }
+//         return response.data; // Повертаємо дані з відповіді сервера
+//       })
+//       .catch(error => {
+//         console.log('Сталася помилка під час виконання запиту:', error);
+//         throw error; // Прокидуємо помилку далі, якщо потрібно
+//       });
+//   }
 
 
 
