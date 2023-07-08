@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export class PixabayAPI {
     API_KEY = '38070095-9e6d535b4dc883ad57627f805';// особистий ключ до бібліотеки
     BASE_URL = 'https://pixabay.com/api/';// базова url адреса
@@ -6,15 +8,20 @@ export class PixabayAPI {
  page = 1;
 
 fetchPhotos() {
-    return fetch(
-        `${this.BASE_URL}?key=${this.API_KEY}&q=${this.query}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=40`)
+  return axios.get(
+    `${this.BASE_URL}?key=${this.API_KEY}&q=${this.query}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=40`
+  )
     .then(response => {
-    if(!response.ok) {
-        throw new Error (console.log('error')) // штучне створення виклику повернення помилки
-    }
-    return response.json() // повертаємо відповідь від сервера у читабельному форматі
+      if (!response.status === 200) {
+        throw new Error('Помилка при виконанні запиту'); // Штучне створення виклику повернення помилки
+      }
+      return response.data; // Повертаємо дані з відповіді сервера
+    })
+    .catch(error => {
+      console.log('Сталася помилка під час виконання запиту:', error);
+      throw error; // Прокидуємо помилку далі, якщо потрібно
     });
-  }
+}
 }
 
 
