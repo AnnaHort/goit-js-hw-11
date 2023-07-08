@@ -1,3 +1,4 @@
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import { PixabayAPI } from "./pixabay-api";
 import createGalleryCards from './createPhotoGallery';
@@ -15,7 +16,7 @@ const handleSearchFormSubmit = event => {
 
     if (!searchQuery) {// якщо інпут пустий 
         inputEl.value = '';
-        return console.log("Sorry, there are no images matching your search query. Please try again.")
+        return Notify.failure("Sorry, there are no images matching your search query. Please try again.")
     };
 
     unsplashInstance.query = searchQuery;// змінюємо значення query для нового класу даємо йому значення інпуту  
@@ -25,8 +26,9 @@ const handleSearchFormSubmit = event => {
         // console.log(data);
         if(!data.hits.length) {// якщо таких даних немає на сервері
             inputEl.value = '';
-            return console.log("Sorry, there are no images matching your search query. Please try again.")
+            return Notify.failure("Sorry, there are no images matching your search query. Please try again.") 
         }
+
 
         galleryListEl.innerHTML = createGalleryCards(data.hits);
         loadMoreButtonEl.classList.remove('is-hidden');
