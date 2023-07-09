@@ -21,6 +21,7 @@ const handleSearchFormSubmit = event => {
 
     unsplashInstance.query = searchQuery;// змінюємо значення query для нового класу даємо йому значення інпуту  
     // console.log(searchQuery);
+    unsplashInstance.page = 1;
 
     unsplashInstance.fetchPhotos().then(data => {
         console.log(data);
@@ -31,6 +32,7 @@ const handleSearchFormSubmit = event => {
 
         galleryListEl.innerHTML = createGalleryCards(data.hits);
         loadMoreButtonEl.classList.remove('is-hidden');
+        loadMoreButtonEl.disabled = false;
 
         inputEl.value = '';
         inputEl.blur();
@@ -42,17 +44,24 @@ const handleSearchFormSubmit = event => {
 const handleLoadMoreButtonClick = () => {
     unsplashInstance.page += 1;
 
-    unsplashInstance
-    .fetchPhotos()
+    unsplashInstance.fetchPhotos()
     .then(data => {
 
-        if( unsplashInstance.hits === data.totalHits.length) {
-            loadMoreButtonEl.classList.add('is-hidden');
-            Notify.info("We're sorry, but you've reached the end of search results.") 
-        }
+        // if( unsplashInstance.hits === data.totalHits.length) {
+        //     loadMoreButtonEl.classList.add('is-hidden');
+        //     Notify.info("We're sorry, but you've reached the end of search results.") 
+        // }
 
+        const allImgPages = Math.ceil(data.totalHits / 40);
+        console.log(allImgPages);
+        if (unsplashInstance.page === allImgPages) {
+          loadMoreButtonEl.classList.add('is-hidden');
+          Notify.info("We're sorry, but you've reached the end of search results.");
+        }
+        
         galleryListEl.insertAdjacentHTML('beforeend', createGalleryCards(data.hits))
-    }).catch(console.warn);
+    })
+    .catch(console.warn);
     loadMoreButtonEl.blur();
 };
 

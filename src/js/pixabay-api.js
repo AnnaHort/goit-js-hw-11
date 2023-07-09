@@ -16,6 +16,7 @@ export class PixabayAPI {
             throw new Error('Помилка при виконанні запиту'); // Штучне створення виклику повернення помилки
         }
         return response.data;
+     
     } catch (error) {
         console.log('Сталася помилка під час виконання запиту:');
         throw error; // Прокидуємо помилку далі, якщо потрібно
