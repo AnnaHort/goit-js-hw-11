@@ -168,3 +168,40 @@ input:hover::placeholder {
 .is-hidden {
     visibility: hidden;
 }
+
+
+/* test style dark theme */
+
+.theme {
+    position: absolute;
+    right: 5%;
+    height: 35px;
+    width: 80px;
+    background-color: #a7a2ad;
+    border: none;
+    border-radius: 5px;
+    padding-top: 3px;
+    font-family: Ysabeau Office, sans-serif;
+    font-size: 16px;
+}
+
+.theme:hover,
+.theme:focus {
+    background-color: #ac9e9e;
+    color: lightgray;
+    outline: none;
+    box-shadow: 0 0 5px rgb(110, 99, 99); 
+    transition: 400ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+html.light {
+    background-color: #fff;
+    color: #333;
+    transition: background-color  500ms cubic-bezier(0.075, 0.82, 0.165, 1) ;
+}
+
+    html.dark {
+    background-color: #333;
+    color: #fff;
+    transition: background-color  500ms cubic-bezier(0.075, 0.82, 0.165, 1) ;
+}
